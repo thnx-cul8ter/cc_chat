@@ -4,7 +4,7 @@ end
 local version=1.0
 local request = http.get("https://raw.githubusercontent.com/thnx-cul8ter/cc_chat/main/version.txt")
 local on=true
-if request.readAll() > version then
+if tonumber(request.readAll()) > version then
 	print("update found")
 	os.sleep(1)
 	shell.run("rm chat.lua")
