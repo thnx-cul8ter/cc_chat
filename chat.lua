@@ -16,7 +16,7 @@ local json=dofile("json.lua")
 mod=peripheral.wrap("back")
 mod.open(8088)
 local input=function()
-    while true do
+    while on do
     print("enter a command")
         local inp=io.read()
         if inp=="send" then
@@ -34,7 +34,7 @@ local input=function()
     end
 end
 local output=function()
-	while true do
+	while on do
         local _,_,freq,_,message=os.pullEvent("modem_message")
         if freq==8088 then
             message=json.decode(message)
@@ -45,5 +45,5 @@ local output=function()
    end
 end
 while on do
-    parallel.waitForAny(input,output)
+    parallel.waitForAll(input,output)
 end
