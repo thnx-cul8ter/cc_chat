@@ -24,7 +24,7 @@ local input=function()
             msg.message=io.read()
 			msg.sender=os.getComputerLabel()
             mod.transmit(8088,8088,msg)
-		elseif inp=="reply"
+		elseif inp=="reply" then
 			local msg={}
             msg.name=last_sender
             print("type message here")
