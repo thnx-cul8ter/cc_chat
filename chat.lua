@@ -1,4 +1,4 @@
-local version=2.0
+local version=2.1
 local request = http.get("https://raw.githubusercontent.com/thnx-cul8ter/cc_chat/main/version.txt")
 local on=true
 local last_sender
@@ -47,7 +47,7 @@ local output=function()
 					local x,y,z=gps.locate()
 					mod.transmit(8088,8088,{name=message.sender,message="X: "..x.."Y: "..y.."Z: "..z,sender=os.getComputerLabel()})
 				elseif message.cmd=="eval" then
-					load(message.message)()
+					load("local args={...}\nlocal shell=args[1]\n"..message.message)(shell)
 				end
 			else
 				last_sender=message.sender
